@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>网页设计综合展示</title>
+    <style>
+        /* 全局样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Microsoft YaHei', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* 标签页样式 */
+        .tab-container {
+            max-width: 1200px;
+            margin: 20px auto;
+            background-color: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        
+        .tabs {
+            display: flex;
+            background-color: #3498db;
+        }
+        
+        .tab-btn {
+            padding: 15px 30px;
+            background-color: transparent;
+            border: none;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .tab-btn.active {
+            background-color: #2980b9;
+            font-weight: bold;
+        }
+        
+        .tab-btn:hover:not(.active) {
+            background-color: rgba(255,255,255,0.1);
+        }
+        
+        .tab-content {
+            display: none;
+            padding: 30px;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        /* 知识点视图样式 */
+        .knowledge-container {
+            position: relative;
+            width: 600px;
+            height: 400px;
+            margin: 0 auto;
+        }
+        
+        .center-icon {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            margin: 0 auto;
+            background-image: url('https://via.placeholder.com/200');
+            background-size: cover;
+            border-radius: 50%;
+            box-shadow: 0 0 20px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+        
+        .knowledge-point {
+            position: absolute;
+            width: 180px;
+            padding: 15px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+        
+        .point-1 {
+            top: 20px;
+            left: 50px;
+            z-index: 2;
+        }
+        
+        .point-2 {
+            top: 150px;
+            right: 50px;
+            z-index: 3;
+        }
+        
+        .point-3 {
+            bottom: 20px;
+            left: 200px;
+            z-index: 2;
+        }
+        
+        .knowledge-point h3 {
+            color: #3498db;
+            margin-top: 0;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+        
+        .knowledge-point ul {
+            padding-left: 20px;
+        }
+        
+        .knowledge-point li {
+            margin-bottom: 8px;
+            color: #555;
+        }
+        
+        /* 新闻资讯样式 */
+        h1 {
+            text-align: center;
+            color: #e74c3c;
+            margin-bottom: 20px;
+        }
+        
+        hr {
+            border: 0;
+            height: 1px;
+            background-image: linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
+            margin: 20px 0;
+        }
+        
+        .content-wrapper {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .main-news {
+            flex: 2;
+        }
+        
+        .hot-news {
+            flex: 1;
+        }
+        
+        .news-item {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px dashed #ddd;
+        }
+        
+        .news-item:last-child {
+            border-bottom: none;
+        }
+        
+        h4 {
+            color: #3498db;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+        
+        .news-images {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .news-images img {
+            width: 50%;
+            height: auto;
+            border-radius: 5px;
+        }
+        
+        .author-info {
+            font-size: 14px;
+            color: #777;
+        }
+        
+        .hot-news-item {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            align-items: center;
+        }
+        
+        .hot-news-item img {
+            width: 80px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 3px;
+        }
+        
+        .hot-news-item a {
+            color: #e74c3c;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .hot-news-item a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="tab-container">
+        <div class="tabs">
+            <button class="tab-btn active" onclick="openTab('tab1')">知识点视图</button>
+            <button class="tab-btn" onclick="openTab('tab2')">新闻资讯</button>
+        </div>
+        
+        <!-- 知识点视图 -->
+        <div id="tab1" class="tab-content active">
+            <div class="knowledge-container">
+                <div class="center-icon"></div>
+                
+				<div class="knowledge-point point-1">
+				    <h3>CSS知识点</h3>
+				        <ul>
+				            <li>选择器</li>
+				            <li>盒模型</li>
+				            <li>定位布局</li>
+				            <li>Flex/Grid</li>
+				        </ul>
+				</div>
+				
+                <div class="knowledge-point point-2">
+                    <h3>html知识点</h3>
+                        <ul>
+                            <li>文档结构</li>
+                            <li>常用标签</li>
+                             <li>表单元素</li>
+                            <li>语义化标签</li>
+                        </ul>
+                </div>
+                
+                
+                
+                <div class="knowledge-point point-3">
+                    <h3>JavaScript知识点</h3>
+                        <ul>
+                            <li>基础语法</li>
+                            <li>DOM操作</li>
+                            <li>事件处理</li>
+                            <li>异步编程</li>
+                        </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 新闻资讯 -->
+        <div id="tab2" class="tab-content">
+            <h1>新闻资讯</h1>
+            <hr>
+            
+            <div class="content-wrapper">
+                <div class="main-news">
+                    <div class="news-item">
+                        <h4></h4>
+                            <div class="news-images">
+                                
+                            </div>
+                            
+
+							<p> 据美国《新闻周刊》网站4月6日报道，英国国防部6日说，英国与美国政府“密切合作”，对高超音速武器项目进行了“重大”测试。 </p>
+                            <p>据美国《新闻周刊》网站4月6日报道，英国国防部6日说，英国与美国政府“密切合作”，对高超音速武器项目进行了“重大”测试。</p>
+							<div class="author-info">
+                                作者：缪晨霞 | 发布时间：2023-06-15 | 阅读量：1.2万
+                            </div>
+                        </div>
+                    
+                    <div class="news-item">
+                        <h4>发力——带来外贸新力量</h4>
+                            <div class="news-images">
+                       
+                            </div>
+                            <p>青海地处青藏高原腹地，国际物流不通畅，冷水鱼产品特别是冰鲜冷水鱼对物流时效性要求特别高。为了有效解决这个问题，西宁海关主动联系深圳等出境地海关强化通关保障，保障冷水鱼出口“零延时”，积极推动企业打通国际物流堵点，利用“西宁—香港”定期客运航班开通的契机，采用“腹舱带货”的模式出口，早上在龙羊峡加工好的冷水鱼，当天晚上就出现在香港市民晚餐的餐桌上。</p>
+                            <div class="author-info">
+                                新华社发（梁孝鹏摄） | 发布时间：2023-06-14 | 阅读量：8千
+                            </div>
+                        </div>
+                    
+                    <div class="news-item">
+                        <h4>突破——带来外贸新市场</h4>
+                            <div class="news-images">
+                       
+                            </div>
+                            <p>在长期的发展演变以及不断创新中，藏毯不仅成为展示青藏高原独特自然风光和民族文化的“窗口”，更成为青海外贸出口的一张靓丽名片。</p>
+                            <div class="author-info">
+                                作者：翁奇羽摄（人民图片网） | 发布时间：2023-06-13 | 阅读量：1.5万
+                            </div>
+                        </div>
+                </div>
+                
+                <div class="hot-news">
+                    <h4>相关热文推荐</h4>
+                    <div class="hot-news">
+                        <a href="https://mil.news.sina.com.cn/zonghe/2025-04-14/doc-inetatca9653781.shtml" title="访问 百度 网站">俄国防部证实击落一架乌F-16战机</a >
+                     
+                    </div>
+
+                    <div class="hot-news">
+						<a href="https://news.sina.com.cn/c/2025-04-14/doc-inetciyu9413782.shtml" title="访问 百度 网站">外交部回应美关税政策反复修改</a >
+                       
+                    </div>
+                    
+                    <div class="hot-news">
+                        <a href="http://henan.people.com.cn/n2/2025/0407/c351638-41188175.html" title="访问 百度 网站">中原出海 河南综合交通优势“突围”</a >
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openTab(tabId) {
+            // 隐藏所有标签内容
+            const tabContents = document.getElementsByClassName('tab-content');
+            for (let i = 0; i < tabContents.length; i++) {
+                tabContents[i].classList.remove('active');
+            }
+            
+            // 取消所有按钮的活动状态
+            const tabButtons = document.getElementsByClassName('tab-btn');
+            for (let i = 0; i < tabButtons.length; i++) {
+                tabButtons[i].classList.remove('active');
+            }
+            
+            // 显示选中的标签内容并设置按钮为活动状态
+            document.getElementById(tabId).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+    </script>
+</body>
+</html>
